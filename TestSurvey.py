@@ -13,6 +13,14 @@ class Anstestcase(unittest.TestCase):
         my_servey = AnonymousSurvey(question)
         my_servey.store_response('English')
         self.assertIn('English',my_servey.responses)
+        
+    def test_more_answer_servey(self):
+        """预存多个答案时，匹配答案"""
+        question = " What language did you first learn to speak? "
+        my_servey = AnonymousSurvey(question)
+        my_servey.responses = ['Chinese','English','Franch']
+        for response in my_servey.responses:
+        self.assertIn('Franch',my_servey.responses)
 
 #测试程序的必要部分
 if __name__ == '__main__':
